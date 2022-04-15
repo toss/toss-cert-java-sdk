@@ -6,11 +6,8 @@ import org.junit.jupiter.api.Test;
 class TossCertSessionTest {
     @Test
     public void test() {
-        // 0. 사전에 전달받은 RSA 공개키 입니다.
-        String publicKeyString = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAoNsnNuQYnGR2v3XSJc2VNxYSBsykuSLJiOeSbWBSEmNG7Fm48rpzZ5bS2diRjHL55ZWBmtJ2k2WqIcHAQS8VnzhFM+bawDwfk6O8xT6hUr+C6ELENWlk2cJchAuGs5HU5bORorIqU+zuhV3kCj7XcZTIYJepWvK2OoIHORH6YkuISpuQUn1ekY11Da/wiZDdLaz7HhKFmkXdV81C13MnsCj8+81akZSupB2QNBbIW3KOVVlfB9zK+3uFoZCqn68C1iZB0u0BCNFF3/N3mNN3tXTmCtSBD+W8+yxowYM4t9ifX19m6sV1mzrGq0/wsXR5jbizAFe79vONuSS7GnG05SO+ZQe/zg9vh3upuQ9P/nmMvRzpTzXJJ9IliNQCboSpIOsbi5IcNqi1G8EVeKNd3IcK3Z5v8nvEpRqn5vD1MU3FNshrHRPxBNZfz3/6NWjlS+af01Q2Y1NYRtuGJNtIUXjHeexkVZycgI7feXs3XtG+yjJU6Z1SnXj5HJbMneCiQbg/aTMsHG57m8+t5QdA+Zx1Gkz3uxpl92/qzZIWV7JwXbR0l2GmSM8I397zT8e2rlIWmQ8XUESjXdmWWBMR2Oqri8drfzHzvfVG5W2D8lcmyHW2yLJ/JBQNK1CJH+NAwJaOmK5sQK8sSLtp8axcveKN+3Dn1kWDrJqk5O90CfUCAwEAAQ==";
-
         // 1. 세션 생성기를 사전에 생성해 주세요.
-        TossCertSessionGenerator tossCertSessionGenerator = new TossCertSessionGenerator(publicKeyString);
+        TossCertSessionGenerator tossCertSessionGenerator = new TossCertSessionGenerator();
 
         // 2. 인증 요청(개인정보가 포함된 경우) API 호출 전에, 세션을 생성해 주세요.
         TossCertSession tossCertSession = tossCertSessionGenerator.generate();
@@ -36,11 +33,8 @@ class TossCertSessionTest {
 
     @Test
     public void cbcTest() {
-        // 0. 사전에 전달받은 RSA 공개키 입니다.
-        String publicKeyString = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAoNsnNuQYnGR2v3XSJc2VNxYSBsykuSLJiOeSbWBSEmNG7Fm48rpzZ5bS2diRjHL55ZWBmtJ2k2WqIcHAQS8VnzhFM+bawDwfk6O8xT6hUr+C6ELENWlk2cJchAuGs5HU5bORorIqU+zuhV3kCj7XcZTIYJepWvK2OoIHORH6YkuISpuQUn1ekY11Da/wiZDdLaz7HhKFmkXdV81C13MnsCj8+81akZSupB2QNBbIW3KOVVlfB9zK+3uFoZCqn68C1iZB0u0BCNFF3/N3mNN3tXTmCtSBD+W8+yxowYM4t9ifX19m6sV1mzrGq0/wsXR5jbizAFe79vONuSS7GnG05SO+ZQe/zg9vh3upuQ9P/nmMvRzpTzXJJ9IliNQCboSpIOsbi5IcNqi1G8EVeKNd3IcK3Z5v8nvEpRqn5vD1MU3FNshrHRPxBNZfz3/6NWjlS+af01Q2Y1NYRtuGJNtIUXjHeexkVZycgI7feXs3XtG+yjJU6Z1SnXj5HJbMneCiQbg/aTMsHG57m8+t5QdA+Zx1Gkz3uxpl92/qzZIWV7JwXbR0l2GmSM8I397zT8e2rlIWmQ8XUESjXdmWWBMR2Oqri8drfzHzvfVG5W2D8lcmyHW2yLJ/JBQNK1CJH+NAwJaOmK5sQK8sSLtp8axcveKN+3Dn1kWDrJqk5O90CfUCAwEAAQ==";
-
         // 1. 세션 생성기를 사전에 생성해 주세요.
-        TossCertSessionGenerator tossCertSessionGenerator = new TossCertSessionGenerator(publicKeyString);
+        TossCertSessionGenerator tossCertSessionGenerator = new TossCertSessionGenerator();
 
         // 2. 인증 요청(개인정보가 포함된 경우) API 호출 전에, 세션을 생성해 주세요.
         TossCertSession tossCertSession = tossCertSessionGenerator.generate(AESAlgorithm.AES_CBC);
@@ -66,11 +60,8 @@ class TossCertSessionTest {
 
     @Test
     public void deserializeTest() {
-        // 0. 사전에 전달받은 RSA 공개키 입니다.
-        String publicKeyString = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAoNsnNuQYnGR2v3XSJc2VNxYSBsykuSLJiOeSbWBSEmNG7Fm48rpzZ5bS2diRjHL55ZWBmtJ2k2WqIcHAQS8VnzhFM+bawDwfk6O8xT6hUr+C6ELENWlk2cJchAuGs5HU5bORorIqU+zuhV3kCj7XcZTIYJepWvK2OoIHORH6YkuISpuQUn1ekY11Da/wiZDdLaz7HhKFmkXdV81C13MnsCj8+81akZSupB2QNBbIW3KOVVlfB9zK+3uFoZCqn68C1iZB0u0BCNFF3/N3mNN3tXTmCtSBD+W8+yxowYM4t9ifX19m6sV1mzrGq0/wsXR5jbizAFe79vONuSS7GnG05SO+ZQe/zg9vh3upuQ9P/nmMvRzpTzXJJ9IliNQCboSpIOsbi5IcNqi1G8EVeKNd3IcK3Z5v8nvEpRqn5vD1MU3FNshrHRPxBNZfz3/6NWjlS+af01Q2Y1NYRtuGJNtIUXjHeexkVZycgI7feXs3XtG+yjJU6Z1SnXj5HJbMneCiQbg/aTMsHG57m8+t5QdA+Zx1Gkz3uxpl92/qzZIWV7JwXbR0l2GmSM8I397zT8e2rlIWmQ8XUESjXdmWWBMR2Oqri8drfzHzvfVG5W2D8lcmyHW2yLJ/JBQNK1CJH+NAwJaOmK5sQK8sSLtp8axcveKN+3Dn1kWDrJqk5O90CfUCAwEAAQ==";
-
         // 1. 세션 생성기를 사전에 생성해 주세요.
-        TossCertSessionGenerator tossCertSessionGenerator = new TossCertSessionGenerator(publicKeyString);
+        TossCertSessionGenerator tossCertSessionGenerator = new TossCertSessionGenerator();
 
         TossCertSession tossCertSession = tossCertSessionGenerator.generate();
 
