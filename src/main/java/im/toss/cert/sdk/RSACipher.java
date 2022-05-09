@@ -28,7 +28,7 @@ class RSACipher {
     String encrypt(String plainText)
             throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException {
-        Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA-256AndMGF1Padding");
+        Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA-1AndMGF1Padding");
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
         byte[] bytePlain = cipher.doFinal(plainText.getBytes());

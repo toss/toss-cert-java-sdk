@@ -10,4 +10,10 @@ class SecureKeyGenerator {
         keyGenerator.init(aesKeyBitLength, new SecureRandom());
         return Base64Utils.encodeToString(keyGenerator.generateKey().getEncoded());
     }
+
+    static String generateRandomBytes(int lengthInBits) {
+        byte[] bytes = new byte[lengthInBits / 8];
+        new SecureRandom().nextBytes(bytes);
+        return Base64Utils.encodeToString(bytes);
+    }
 }
