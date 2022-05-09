@@ -33,7 +33,12 @@ public class TossCertSessionGenerator {
         try {
             String id = UUID.randomUUID().toString();
             String secretKey = SecureKeyGenerator.generateKey(256);
-            String iv = SecureKeyGenerator.generateKey(128);
+            String iv;
+            if (algorithm == AESAlgorithm.AES_GCM) {
+                iv = SecureKeyGenerator.generateRandomBytes(96);
+            } else {
+                iv = SecureKeyGenerator.generateKey(128);
+            }
             String encryptedSessionKey = buildEncryptSessionKeyPart(algorithm, secretKey, iv);
             return new TossCertSession(version, id, algorithm, secretKey, iv, encryptedSessionKey);
         } catch (Exception e) {
