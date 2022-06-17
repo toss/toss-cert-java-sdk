@@ -6,7 +6,7 @@ JAVA 1.8버전 사용자들을 위한 세션키 발급 및 개인정보 암복�
 
 예시)
 ```
-<version>0.0.3</version>
+<version>0.0.4</version>
 ```
 
 pom.xml 을 사용하시면 아래와 같이 추가해주세요.
@@ -47,7 +47,7 @@ dependencies {
 ## 예제
 [TossCertSessionTest.java](https://github.com/toss/toss-cert-java-sdk/blob/main/src/test/java/im/toss/cert/sdk/TossCertSessionTest.java) 를 참조해주세요.
 
-## JDK 1.7 버전 사용하는 경우
+## JDK 1.8 미만 버전 사용하는 경우
 SDK 내부에서 기본적으로 AES GCM 알고리즘을 사용합니다.
 
 JDK 1.8 미만 버전은 AES GCM 을 지원하지 않으므로 AES CBC 알고리즘을 사용해야합니다.
@@ -55,4 +55,11 @@ JDK 1.8 미만 버전은 AES GCM 을 지원하지 않으므로 AES CBC 알고리
 세션을 생성할 때, 아래와 같이 알고리즘 파라미터를 추가해주세요.
 ```
 TossCertSession tossCertSession = tossCertSessionGenerator.generate(AESAlgorithm.AES_GCM);
+```
+
+Oracle JDK 7u171 미만 버전에서 AES-256 알고리즘 이용하려면 [링크](https://www.oracle.com/java/technologies/javase-jce-all-downloads.html)에 설명된 Unlimited Strength Jurisdiction Policy 적용이 필요합니다.
+
+AES-128을 사용하시고 싶으신 경우, 아래 메서드를 사용해주세요.
+```
+TossCertSession tossCertSession = tossCertSessionGenerator.generateCBC128();
 ```

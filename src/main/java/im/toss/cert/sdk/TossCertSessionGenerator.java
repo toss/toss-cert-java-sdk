@@ -29,15 +29,27 @@ public class TossCertSessionGenerator {
         return generate(AESAlgorithm.AES_GCM);
     }
 
+    public TossCertSession generateCBC128() {
+        return generate(AESAlgorithm.AES_CBC, 128, 128);
+    }
+
     public TossCertSession generate(AESAlgorithm algorithm) {
+        if (algorithm == AESAlgorithm.AES_GCM) {
+            return generate(algorithm, 256, 96);
+        } else {
+            return generate(algorithm, 256, 128);
+        }
+    }
+
+    private TossCertSession generate(AESAlgorithm algorithm, int keyLength, int ivLength) {
         try {
             String id = UUID.randomUUID().toString();
-            String secretKey = SecureKeyGenerator.generateKey(256);
+            String secretKey = SecureKeyGenerator.generateKey(keyLength);
             String iv;
             if (algorithm == AESAlgorithm.AES_GCM) {
-                iv = SecureKeyGenerator.generateRandomBytes(96);
+                iv = SecureKeyGenerator.generateRandomBytes(ivLength);
             } else {
-                iv = SecureKeyGenerator.generateKey(128);
+                iv = SecureKeyGenerator.generateKey(ivLength);
             }
             String encryptedSessionKey = buildEncryptSessionKeyPart(algorithm, secretKey, iv);
             return new TossCertSession(version, id, algorithm, secretKey, iv, encryptedSessionKey);
