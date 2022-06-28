@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'com.github.toss'
-version '0.0.6'
+version '0.0.7'
 
 sourceCompatibility = JavaVersion.VERSION_1_6
 targetCompatibility = JavaVersion.VERSION_1_6
