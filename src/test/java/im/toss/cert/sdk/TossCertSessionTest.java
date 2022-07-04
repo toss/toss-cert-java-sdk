@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 class TossCertSessionTest {
     @Test
-    public void test() {
+    void test() {
         // 1. 세션 생성기를 사전에 1회만 생성해 주세요.
         TossCertSessionGenerator tossCertSessionGenerator = new TossCertSessionGenerator();
 
@@ -35,7 +35,7 @@ class TossCertSessionTest {
     }
 
     @Test
-    public void cdcTest() {
+    void cdcTest() {
         // 1. 세션 생성기를 사전에 1회만 생성해 주세요.
         TossCertSessionGenerator tossCertSessionGenerator = new TossCertSessionGenerator();
 

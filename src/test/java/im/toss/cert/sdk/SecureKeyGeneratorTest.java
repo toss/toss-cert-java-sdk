@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 class SecureKeyGeneratorTest {
 
     @Test
-    public void test() throws NoSuchAlgorithmException {
+    void test() throws NoSuchAlgorithmException {
         String key = SecureKeyGenerator.generateKey(256);
         System.out.println("key:" + key);
     }

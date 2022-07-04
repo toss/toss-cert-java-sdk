@@ -15,7 +15,7 @@ class AESCipherTest {
     private final String iv = "RVlJy3sZ5II9nQTOe3Hg+Q==";
 
     @Test
-    public void test() throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    void test() throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         String plainText = "Test Plain String";
         AESCipher aesCipher = new AESCipher(key, iv);
 
