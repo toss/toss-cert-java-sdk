@@ -31,7 +31,7 @@ class RSACipher {
         Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA-1AndMGF1Padding");
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
-        byte[] bytePlain = cipher.doFinal(plainText.getBytes());
+        byte[] bytePlain = cipher.doFinal(plainText.getBytes(Constants.charset));
         return Base64Utils.encodeToString(bytePlain);
     }
 }

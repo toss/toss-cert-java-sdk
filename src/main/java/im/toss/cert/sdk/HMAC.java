@@ -10,9 +10,9 @@ class HMAC {
 
     static String calculateHash(String secret, String message) throws NoSuchAlgorithmException, InvalidKeyException {
         Mac sha256Hmac = Mac.getInstance(algorithm);
-        SecretKeySpec secretKey = new SecretKeySpec(secret.getBytes(), algorithm);
+        SecretKeySpec secretKey = new SecretKeySpec(secret.getBytes(Constants.charset), algorithm);
         sha256Hmac.init(secretKey);
-        return bytesToHex(sha256Hmac.doFinal(message.getBytes()));
+        return bytesToHex(sha256Hmac.doFinal(message.getBytes(Constants.charset)));
     }
 
     private static final char[] HEX_ARRAY = "0123456789abcdef".toCharArray();

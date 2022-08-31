@@ -7,14 +7,12 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.Charset;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.AlgorithmParameterSpec;
 
 class AESCipher {
-    private static final Charset charset = Charset.forName("UTF-8");
     private final SecretKeySpec secretKey;
     private final AlgorithmParameterSpec ivSpec;
     private final AESAlgorithm algorithm;
@@ -35,14 +33,14 @@ class AESCipher {
 
     String encrypt(String plainText) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         Cipher cipher = getCipher(Cipher.ENCRYPT_MODE);
-        byte[] cipherText = cipher.doFinal(plainText.getBytes(charset));
+        byte[] cipherText = cipher.doFinal(plainText.getBytes(Constants.charset));
         return Base64Utils.encodeToString(cipherText);
     }
 
     String decrypt(String encryptedText) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         Cipher cipher = getCipher(Cipher.DECRYPT_MODE);
         byte[] cipherText = cipher.doFinal(Base64Utils.decode(encryptedText));
-        return new String(cipherText, charset);
+        return new String(cipherText, Constants.charset);
     }
 
     private Cipher getCipher(int opMode) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException {
