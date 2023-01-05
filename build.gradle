@@ -3,10 +3,12 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'org.owasp.dependencycheck' version '6.2.1'
+    id 'org.sonarqube' version '3.3'
 }
 
 group 'com.github.toss'
-version '0.0.9'
+version '0.0.10'
 
 sourceCompatibility = JavaVersion.VERSION_1_6
 targetCompatibility = JavaVersion.VERSION_1_6
@@ -25,6 +27,8 @@ repositories {
 
 dependencies {
     implementation 'commons-codec:commons-codec:1.15'
+    implementation 'org.owasp:dependency-check-gradle:6.2.1'
+    implementation 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 

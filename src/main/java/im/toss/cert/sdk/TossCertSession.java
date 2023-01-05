@@ -43,7 +43,7 @@ public class TossCertSession {
             String hash = calculateHash(plainText);
             return addMeta(StringUtils.join(separator, new String[]{encrypted, hash}));
         } catch (Exception e) {
-            throw new RuntimeException(e.getCause());
+            throw new RuntimeException(e);
         }
     }
 
@@ -63,7 +63,7 @@ public class TossCertSession {
             verify(plainText, items);
             return plainText;
         } catch (Exception e) {
-            throw new RuntimeException(e.getCause());
+            throw new RuntimeException(e);
         }
     }
 
