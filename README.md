@@ -45,7 +45,7 @@ dependencies {
 ```
 
 ## 예제
-[TossCertSessionTest.java](https://github.com/toss/toss-cert-java-sdk/blob/main/src/test/java/im/toss/cert/sdk/TossCertSessionTest.java) 를 참조해주세요.
+[ExampleTest.java](https://github.com/toss/toss-cert-java-sdk/blob/main/src/test/java/im/toss/cert/sdk/ExampleTest.java) 를 참조해주세요.
 
 ## JDK 1.8 미만 버전 사용하는 경우
 SDK 내부에서 기본적으로 AES GCM 알고리즘을 사용합니다.
