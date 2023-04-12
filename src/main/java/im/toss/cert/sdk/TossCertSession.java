@@ -1,5 +1,9 @@
 package im.toss.cert.sdk;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -42,8 +46,18 @@ public class TossCertSession {
             String encrypted = aesCipher.encrypt(plainText);
             String hash = calculateHash(plainText);
             return addMeta(StringUtils.join(separator, new String[]{encrypted, hash}));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (InvalidAlgorithmParameterException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (NoSuchPaddingException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (IllegalBlockSizeException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (BadPaddingException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (InvalidKeyException e) {
+            throw new RuntimeException(e.getCause());
         }
     }
 
@@ -62,8 +76,18 @@ public class TossCertSession {
             String plainText = aesCipher.decrypt(items[2]);
             verify(plainText, items);
             return plainText;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (InvalidAlgorithmParameterException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (NoSuchPaddingException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (IllegalBlockSizeException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (BadPaddingException e) {
+            throw new RuntimeException(e.getCause());
+        } catch (InvalidKeyException e) {
+            throw new RuntimeException(e.getCause());
         }
     }
 
