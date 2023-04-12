@@ -26,8 +26,8 @@ repositories {
 dependencies {
     implementation 'commons-codec:commons-codec:1.15'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testImplementation 'javax.json:javax.json-api:1.1.4'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
-
 }
 
 compileTestJava {
