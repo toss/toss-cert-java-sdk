@@ -1,6 +1,10 @@
 package im.toss.cert.sdk;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class TossCertSessionTest {
     @Test
@@ -63,5 +67,17 @@ class TossCertSessionTest {
         // response.userName 을 응답받은 암호화된 userName 이라고 가정합니다.
         // decryptedUserName 은 무결성 검증까지 완료되어 있습니다.
         // String decryptedUserName = tossCertSession2.decrypt(response.userName);
+    }
+
+    @Test
+    void sessionKeyNotIncludeLineBreak() {
+        TossCertSessionGenerator tossCertSessionGenerator = new TossCertSessionGenerator();
+        TossCertSession tossCertSession = tossCertSessionGenerator.generate();
+
+        String sessionKey = tossCertSession.getSessionKey();
+        Pattern pattern = Pattern.compile("[\\r\\n]");
+        Matcher matcher = pattern.matcher(sessionKey);
+
+        Assertions.assertFalse(matcher.find());
     }
 }

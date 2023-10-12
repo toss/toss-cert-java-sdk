@@ -4,7 +4,9 @@ import org.apache.commons.codec.binary.Base64;
 
 class Base64Utils {
     static String encodeToString(byte[] src) {
-        return Base64.encodeBase64String(src).trim();
+        return Base64.encodeBase64String(src)
+            .replace("\r", "")
+            .replace("\n", "");
     }
 
     static byte[] decode(String src) {
