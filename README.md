@@ -54,7 +54,7 @@ JDK 1.8 미만 버전은 AES GCM 을 지원하지 않으므로 AES CBC 알고리
 
 세션을 생성할 때, 아래와 같이 알고리즘 파라미터를 추가해주세요.
 ```
-TossCertSession tossCertSession = tossCertSessionGenerator.generate(AESAlgorithm.AES_GCM);
+TossCertSession tossCertSession = tossCertSessionGenerator.generate(AESAlgorithm.AES_CBC);
 ```
 
 Oracle JDK 7u171 미만 버전에서 AES-256 알고리즘 이용하려면 [링크](https://www.oracle.com/java/technologies/javase-jce-all-downloads.html)에 설명된 Unlimited Strength Jurisdiction Policy 적용이 필요합니다.
