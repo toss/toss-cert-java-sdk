@@ -32,7 +32,7 @@ pom.xml 을 사용하시면 아래와 같이 추가해주세요.
 
 build.gradle 을 사용하신다면, 아래와 같이 추가해주세요.
 
-```
+```gradle
 repositories {
     mavenCentral()
     maven { url = uri("https://jitpack.io") }
